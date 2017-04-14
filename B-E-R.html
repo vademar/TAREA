@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Buscar ELiminar Repetidos</title>
+	<meta charset="windows-1252">
+	<merta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		var myArra = ["gato","perro","gallo","gallo","asno","asno","perro"];
+		
+		function add(){
+			var txt = document.getElementById('txt').value;
+			myArra.push(txt);
+			document.getElementById('pgh').innerHTML=myArra;
+		}
+
+		function search(){
+			var txt = document.getElementById('txt').value;
+			var index = myArra.indexOf(txt);
+			if(index !== -1){
+				alert("Elemento Existente");
+			}
+			else{
+				alert("Elemento No Existente");
+			}
+		}
+
+		function remover(){
+			var txt = document.getElementById('txt').value;
+			var index = myArra.indexOf(txt);
+			if(index !== -1){
+				myArra.splice(index, 1);
+				document.getElementById('pgh').innerHTML=myArra;
+			}
+			else{
+				alert("VERIFIQUE EL TEXTO");
+			}
+		}
+
+		function DelRep(){
+			/*var txt = document.getElementById('txt').value;
+			var index = myArra.indexOf(txt);*/
+			var unique = myArra.filter((v, i, a) => a.indexOf(v) === i);
+			document.getElementById('pgh').innerHTML=unique;
+		}
+
+	</script>
+</head>
+	<body>
+
+		<input type="text" name="txt" id="txt"/>
+		<p id="pgh"></p>
+
+		<button onclick="add();">Agregar</button>
+		<button onclick="search();">Buscar</button>
+		<button onclick="remover();">Eliminar</button>
+		<P></P>
+		<button onclick="DelRep();">Eliminar Repetidos</button>
+
+		<script>
+			document.getElementById('pgh').innerHTML=myArra;
+		</script>
+
+	</body>
+</html>
